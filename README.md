@@ -5,9 +5,13 @@ How to use the NCBI ressources from the command line and not be lost in the NCBI
 
 # Get data from NCBI
 
-Sequencing data are usually in a SRA format and can be fetched using the run number (usually starting with SRR). If you have the run number, go directly to the downloading step. If not, you need to have something which refer to a NCBI archive (BioSample number, Experiment number, project number, ...). The best is to use whatever you have and to search for it at https://www.ncbi.nlm.nih.gov/Traces/study/. If you need to download all SRA files of one project, use the project number (starts with PRJNA), the website will lead you to a page with all the samples within the project and you can from there download the `SraRunTable.txt` file by clicking on 'RunInfo Table'. This file contains all informations about each sample, including the run number which allows you to download the data in sra format. You can also get only the run number by clicking on 'Accession List', giving you the SRR_Acc_List.
+Sequencing data are usually in a SRA format and can be fetched using the run number (usually starting with SRR). If you have the run number, go directly to the downloading step. If not, you need to have something which refer to a NCBI archive (BioSample number, Experiment number, project number, ...). The best is to use whatever you have and to search for it at https://www.ncbi.nlm.nih.gov/Traces/study/. If you need to download all SRA files of one project, use the project number (starts with PRJNA), the website will lead you to a page with all the samples within the project and you can from there download the `SraRunTable.txt` file by clicking on 'RunInfo Table'. This file contains all informations about each sample, including the run number which allows you to download the data in sra format. You can also get only the run number by clicking on 'Accession List', giving you the `SRR_Acc_List`. You can directly use the later in a while loop to download your data.
 
 ![](images/search_ncbi.PNG)
+
+*The 3 important fields for the search and the downloading of the `SraRunTable.txt` and `SRR_Acc_List.txt` are highlighted in yellow.*
+
+
 
 # Download the data
 
@@ -36,14 +40,13 @@ For paired-end data, 2 fastq files will be generated, each having 1 mate.
 
 ## Using fastq-dump
 
-One can directly get the fastq file but it goes anyway through a sra cache file in /home/user/ncbi/public/sra so it remains problematic if you have limited space in your home directory.
+Get the fastq file but it goes anyway through a sra cache file in /home/user/ncbi/public/sra so it remains problematic if you have limited space in your home directory.
 
 For single-end data
 
 ```
 while read name in list; do
 	fastq-dump --split-spot $name
-	rm $HOME/ncbi/public/sra/${name}.sra
 done < SRR_Acc_List.txt
 
 ```
@@ -53,7 +56,6 @@ For paired-end data
 ```
 while read name in list; do
 	fastq-dump --split-files $name
-	rm $HOME/ncbi/public/sra/${name}.sra
 done < SRR_Acc_List.txt
 ```
 
@@ -84,7 +86,14 @@ done
 ```
 
 
+## Authors
 
+* **Johan Zicola** - *Initial work* - [johanzi](https://github.com/johanzi)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 
 
