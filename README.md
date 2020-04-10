@@ -51,6 +51,8 @@ done < SRR_Acc_List.txt
 
 ```
 
+*NB: If `--split-spot` argument is used for paired-end data, the sequences of the mate reads will be grouped together in the single output fastq file.
+
 For paired-end data
 
 ```
