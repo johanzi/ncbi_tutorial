@@ -36,6 +36,8 @@ for i in *sra; do
 done
 ```
 
+Note that you can directly get compressed fastq files by adding the argument `--gzip` to the `fastq-dump` command.
+
 For paired-end data, 2 fastq files will be generated, each having 1 mate.
 
 ## Using fastq-dump
