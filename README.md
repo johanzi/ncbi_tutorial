@@ -47,7 +47,7 @@ Get the fastq file but it goes anyway through a sra cache file in /home/user/ncb
 For single-end data
 
 ```
-while read name in list; do
+while read name; do
 	fastq-dump --split-spot $name
 done < SRR_Acc_List.txt
 
@@ -58,7 +58,7 @@ done < SRR_Acc_List.txt
 For paired-end data
 
 ```
-while read name in list; do
+while read name; do
 	fastq-dump --split-files $name
 done < SRR_Acc_List.txt
 ```
