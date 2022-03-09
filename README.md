@@ -22,7 +22,7 @@ There are different ways to download a sra file, you need in all case sratoolkit
 Get directly the SRA file uploaded locally (per defaul in /home/user/ncbi/public/sra). Check https://www.biostars.org/p/159950/ if you have trouble with disk space quota or go directly to the method using wget.
 
 ```
-while read name in list; do
+while read name; do
 	prefetch $name
 done < SRR_Acc_List.txt
 ```
@@ -42,7 +42,7 @@ For paired-end data, 2 fastq files will be generated, each having 1 mate.
 
 ## Using fastq-dump
 
-Get the fastq file but it goes anyway through a sra cache file in /home/user/ncbi/public/sra so it remains problematic if you have limited space in your home directory.
+Get the fastq files directly but it goes anyway through a sra cache file in /home/user/ncbi/public/sra so it remains problematic if you have limited space in your home directory.
 
 For single-end data
 
