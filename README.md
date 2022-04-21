@@ -42,7 +42,7 @@ For paired-end data, 2 fastq files will be generated, each having 1 mate.
 
 ## Using fastq-dump
 
-Get the fastq files directly but it goes anyway through a sra cache file in /home/user/ncbi/public/sra so it remains problematic if you have limited space in your home directory.
+Get the fastq files directly but it goes anyway through a sra cache file in /home/user/ncbi/public/sra so it remains problematic if you have limited space in your home directory. In case your home directory is limited in space, a quick fix to change the location of the cache files is described in https://standage.github.io/that-darn-cache-configuring-the-sra-toolkit.html
 
 For single-end data
 
